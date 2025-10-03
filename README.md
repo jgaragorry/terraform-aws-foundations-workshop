@@ -149,23 +149,31 @@ Abre tu terminal de Ubuntu en WSL y sigue estos pasos.
 
 #### 1.5. Instalar Terraform
 
-* **Propósito:** Instalar la herramienta de Infraestructura como Código de HashiCorp.
-* **Comandos:**
+* **Propósito:** Instalar la herramienta de Infraestructura como Código de HashiCorp. Estos comandos añaden de forma segura el repositorio oficial de HashiCorp a tu sistema y luego instalan Terraform.
+* **Comando:** Copia y pega el siguiente bloque completo en tu terminal. Está diseñado para funcionar incluso si ya lo has ejecutado antes.
     ```bash
-    # 1. Añadir la clave GPG de HashiCorp
-    wget -O- [https://apt.releases.hashicorp.com/gpg](https://apt.releases.hashicorp.com/gpg) | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    # 1. Asegurar que las dependencias de APT estén presentes
+    sudo apt-get install -y gpg wget
 
-    # 2. Añadir el repositorio oficial de HashiCorp
-    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] [https://apt.releases.hashicorp.com](https://apt.releases.hashicorp.com) $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+    # 2. Añadir la clave GPG oficial de HashiCorp
+    # Se elimina la clave anterior si existe para garantizar una instalación limpia
+    sudo rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
+    wget -O- [https://apt.releases.hashicorp.com/gpg](https://apt.releases.hashicorp.com/gpg) | \
+        gpg --dearmor | \
+        sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
 
-    # 3. Instalar Terraform
-    sudo apt update && sudo apt install terraform -y
-    ```
-* **Verificación:**
-    ```bash
+    # 3. Añadir el repositorio oficial de HashiCorp
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] [https://apt.releases.hashicorp.com](https://apt.releases.hashicorp.com) $(lsb_release -cs) main" | \
+        sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+    # 4. Actualizar la lista de paquetes e instalar Terraform
+    sudo apt update
+    sudo apt install -y terraform
+
+    # 5. Verificar la instalación
     terraform -version
-    # Salida esperada (la versión puede variar): Terraform v1.9.0
     ```
+* **Verificación:** El comando `terraform -version` al final del bloque debe mostrar la versión instalada sin errores.
 
 ¡Felicidades! Tu entorno local está listo para empezar a construir infraestructura.
 
