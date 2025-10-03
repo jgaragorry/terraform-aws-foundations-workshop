@@ -118,10 +118,10 @@ Abre tu terminal de Ubuntu en WSL y sigue estos pasos.
 * **Propósito:** La Interfaz de Línea de Comandos de AWS nos permite interactuar con nuestra cuenta de AWS desde la terminal. Es esencial para configurar las credenciales que Terraform usará.
 * **Comandos:**
     ```bash
-    curl "[https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip](https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip)" -o "awscliv2.zip"
-    unzip awscliv2.zip
-    sudo ./aws/install
-    rm -rf aws awscliv2.zip # Limpiamos los archivos de instalación
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      unzip awscliv2.zip
+      sudo ./aws/install
+      rm -rf aws awscliv2.zip # Limpiamos los archivos de instalación
     ```
 * **Verificación:**
     ```bash
