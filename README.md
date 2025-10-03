@@ -1,6 +1,6 @@
 # Workshop: Fundamentos de Terraform en AWS desde Cero
 
-![Terraform AWS Banner](https://www.datocms-assets.com/2885/1620150552-product-brand-terraform-color.svg)
+![Terraform AWS Banner](https://aws-icons.svg.zone/images/Architecture-Group-Icons/Architecture-Group-Icons_01312024/AWS-Cloud-logo_32.svg)
 
 Este workshop está diseñado para guiar a principiantes absolutos en la creación de infraestructura en AWS utilizando Terraform. Partiremos desde un entorno limpio en Ubuntu 24.04 LTS (vía WSL2) y construiremos una base sólida aplicando las mejores prácticas de **DevOps, DevSecOps, SRE y FinOps** desde el primer día.
 
