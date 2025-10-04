@@ -149,11 +149,11 @@ Abre tu terminal de Ubuntu en WSL y sigue estos pasos.
 
 #### 1.5. Instalar Terraform
 
-* **Propósito:** Instalar la herramienta de Infraestructura como Código de HashiCorp. Estos comandos añaden de forma segura el repositorio oficial de HashiCorp a tu sistema y luego instalan Terraform.
-* **Comando:** Copia y pega el siguiente bloque completo en tu terminal. Está diseñado para funcionar incluso si ya lo has ejecutado antes.
+* **Propósito:** Instalar la herramienta de Infraestructura como Código de HashiCorp. Estos comandos añaden de forma segura el repositorio oficial de HashiCorp a tu sistema y luego instalan la aplicación.
+* **Comando:** Copia y pega el siguiente bloque completo en tu terminal. Está diseñado para funcionar correctamente incluso si ya lo has ejecutado antes. **Usa el botón de copiar 📋 del bloque de código** para evitar errores de formato.
     ```bash
-    # 1. Asegurar que las dependencias de APT estén presentes
-    sudo apt-get install -y gpg wget
+    # 1. Asegurar que las dependencias necesarias estén instaladas
+    sudo apt-get update && sudo apt-get install -y gpg wget
 
     # 2. Añadir la clave GPG oficial de HashiCorp
     # Se elimina la clave anterior si existe para garantizar una instalación limpia
@@ -162,7 +162,7 @@ Abre tu terminal de Ubuntu en WSL y sigue estos pasos.
         gpg --dearmor | \
         sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
 
-    # 3. Añadir el repositorio oficial de HashiCorp
+    # 3. Añadir el repositorio de HashiCorp a las fuentes de APT
     echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] [https://apt.releases.hashicorp.com](https://apt.releases.hashicorp.com) $(lsb_release -cs) main" | \
         sudo tee /etc/apt/sources.list.d/hashicorp.list
 
@@ -171,10 +171,10 @@ Abre tu terminal de Ubuntu en WSL y sigue estos pasos.
     sudo apt install -y terraform
 
     # 5. Verificar la instalación
+    echo "--- Verificación de Terraform ---"
     terraform -version
     ```
-* **Verificación:** El comando `terraform -version` al final del bloque debe mostrar la versión instalada sin errores.
-
+* **Verificación:** El comando `terraform -version` al final del bloque debe mostrar la versión instalada sin errores, confirmando que el proceso fue exitoso.
 ---
 
 ### 📂 **Paso 2: Estructura y Código del Proyecto Terraform**
