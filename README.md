@@ -157,18 +157,17 @@ Abre tu terminal de Ubuntu en WSL y sigue estos pasos.
 
     # 2. Añadir la clave GPG oficial de HashiCorp
     # Se elimina la clave anterior si existe para garantizar una instalación limpia
-    sudo rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
-    wget -O- [https://apt.releases.hashicorp.com/gpg](https://apt.releases.hashicorp.com/gpg) | \
-        gpg --dearmor | \
-        sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+    wget -O- https://apt.releases.hashicorp.com/gpg | \
+    gpg --dearmor | \
+    sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
 
     # 3. Añadir el repositorio de HashiCorp a las fuentes de APT
-    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] [https://apt.releases.hashicorp.com](https://apt.releases.hashicorp.com) $(lsb_release -cs) main" | \
-        sudo tee /etc/apt/sources.list.d/hashicorp.list
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+    sudo tee /etc/apt/sources.list.d/hashicorp.list
 
     # 4. Actualizar la lista de paquetes e instalar Terraform
-    sudo apt update
-    sudo apt install -y terraform
+    sudo apt-get update
+    sudo apt-get install -y terraform
 
     # 5. Verificar la instalación
     echo "--- Verificación de Terraform ---"
