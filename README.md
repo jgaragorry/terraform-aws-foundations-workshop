@@ -175,8 +175,6 @@ Abre tu terminal de Ubuntu en WSL y sigue estos pasos.
     ```
 * **Verificación:** El comando `terraform -version` al final del bloque debe mostrar la versión instalada sin errores.
 
-¡Felicidades! Tu entorno local está listo para empezar a construir infraestructura.
-
 ---
 
 ### 📂 **Paso 2: Estructura y Código del Proyecto Terraform**
